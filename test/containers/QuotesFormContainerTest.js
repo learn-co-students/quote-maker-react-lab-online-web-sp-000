@@ -34,7 +34,7 @@ describe('QuoteForm Component', () => {
       div
     );
   });
-  //
+
   // it('has a default state', () => {
   //   store = createStore(rootReducer)
   //   wrapper = mount(<Provider store={store}><App /></Provider>);
