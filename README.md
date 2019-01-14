@@ -21,6 +21,7 @@ The quotes reducer should have an initial state of:
 []
 ```
 
+
 But when a Quote is added it should look like. (We will be using the `uuid` node
 package for generating ids)
 
@@ -42,7 +43,7 @@ to build these.
 
 Build out several actions as specified in the tests that build Action Creators
 for add, removing, upvoting and downvoting quotes.
-    
+
 ### QuoteForm Component
 
 Our Quote form will have a textarea for a quotes content and an input for a
