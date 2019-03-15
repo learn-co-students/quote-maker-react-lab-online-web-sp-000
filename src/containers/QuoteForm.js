@@ -6,23 +6,24 @@ import { addQuote } from "../actions/quotes";
 class QuoteForm extends Component {
   state = {
     // id: "",
-    content: "",
-    author: ""
+    content: "sample content",
+    author: "sample author"
   };
 
   handleOnChange = event => {
-    // event.persist();
-    this.setState({ ...this.state, [event.target.name]: event.target.value})
+    this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
-
-  // {y: content}
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // Pass quote object to action creator
-    addQuote(this.state);
-    // Update component state to return to default state
+    const quote = {
+      id: uuid(),
+      content: this.state.content,
+      author: this.state.author
+    };
+    this.props.addQuote(quote);
     this.setState({
+      id: uuid(),
       content: "",
       author: ""
     });
@@ -62,6 +63,7 @@ class QuoteForm extends Component {
                         type="text"
                         value={this.state.author}
                         name="author"
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -85,10 +87,14 @@ const mapStateToProps = state => {
   return {};
 };
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    addQuote: () => {
+      dispatch(addQuote())
+    }
+  };
 };
 //add arguments to connect as needed
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { addQuote }
 )(QuoteForm);
