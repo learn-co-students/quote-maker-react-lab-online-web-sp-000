@@ -69,10 +69,10 @@ class QuoteForm extends Component {
   }
 }
 const mapStateToProps = state => {
-  return;
+  return {};
 };
 const mapDispatchToProps = dispatch => {
-  return;
+  return { };
 };
 //add arguments to connect as needed
 export default connect(mapStateToProps, mapDispatchToProps)(QuoteForm);
