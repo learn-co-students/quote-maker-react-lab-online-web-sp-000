@@ -6,7 +6,7 @@ export default (state = [], action) => {
   // function ADD_QUOTE() {
   //   return [...this.quotes, this.action.quote];
   // }
-  // function REMOVE_QUOTE() {
+  // function REMOVE_QUOTE() {©c
   //   return [...this.quotes.slice(0, index), ...this.quotes.slice(index + 1)];
   // }
   // function UPVOTE_QUOTE() {
