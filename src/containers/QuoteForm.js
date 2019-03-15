@@ -5,20 +5,27 @@ import { addQuote } from "../actions/quotes";
 
 class QuoteForm extends Component {
   state = {
-    id: "",
+    // id: "",
     content: "",
     author: ""
   };
 
   handleOnChange = event => {
-    // this.setState({...this.state, event.target.htmlFor: event.target.value})
+    // event.persist();
+    this.setState({ ...this.state, [event.target.name]: event.target.value})
   };
 
+  // {y: content}
+
   handleOnSubmit = event => {
-    // Handle Form Submit event default
-    // Create quote object from state
+    event.preventDefault();
     // Pass quote object to action creator
+    addQuote(this.state);
     // Update component state to return to default state
+    this.setState({
+      content: "",
+      author: ""
+    });
   };
 
   render() {
@@ -28,15 +35,20 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form
+                  className="form-horizontal"
+                  onSubmit={this.handleOnSubmit}
+                >
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">
                       Quote
                     </label>
                     <div className="col-md-5">
                       <textarea
+                        onChange={this.handleOnChange}
                         className="form-control"
                         value={this.state.content}
+                        name="content"
                       />
                     </div>
                   </div>
@@ -49,6 +61,7 @@ class QuoteForm extends Component {
                         className="form-control"
                         type="text"
                         value={this.state.author}
+                        name="author"
                       />
                     </div>
                   </div>
@@ -72,7 +85,10 @@ const mapStateToProps = state => {
   return {};
 };
 const mapDispatchToProps = dispatch => {
-  return { };
+  return {};
 };
 //add arguments to connect as needed
-export default connect(mapStateToProps, mapDispatchToProps)(QuoteForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuoteForm);
