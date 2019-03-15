@@ -1,7 +1,7 @@
 export default (state = [], action) => {
-  const quotes = [...state.quotes]; // allowed to mutate this clone
+  const quotes = [...state.quotes]; // CLONE of the state's quotes, allowed to mutate.
   const index = quotes.findIndex(q => q === action.quote); // find the action quote in our clone
-  const quote = quotes[index] // actual reference to the EXISTING quote in the cloned array
+  const quote = quotes[index] // actual REFERENCE to the EXISTING quote in the CLONED array
 
   switch (action.type) {
     case "ADD_QUOTE":
