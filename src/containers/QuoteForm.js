@@ -15,6 +15,7 @@ class QuoteForm extends Component {
   };
 
   handleOnSubmit = event => {
+    const x = this
     event.preventDefault();
     const quote = {
       id: uuid(),
@@ -93,8 +94,9 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-//add arguments to connect as needed
+
 export default connect(
   mapStateToProps,
+  // mapDispatchToProps
   { addQuote }
 )(QuoteForm);
