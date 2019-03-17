@@ -5,7 +5,6 @@ import { addQuote } from "../actions/quotes";
 
 class QuoteForm extends Component {
   state = {
-    // id: "",
     content: "sample content",
     author: "sample author"
   };
@@ -15,16 +14,15 @@ class QuoteForm extends Component {
   };
 
   handleOnSubmit = event => {
-    const x = this
     event.preventDefault();
     const quote = {
       id: uuid(),
       content: this.state.content,
-      author: this.state.author
+      author: this.state.author,
+      votes: 0
     };
     this.props.addQuote(quote);
     this.setState({
-      id: uuid(),
       content: "",
       author: ""
     });
@@ -90,7 +88,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addQuote: () => {
-      dispatch(addQuote())
+      dispatch(addQuote());
     }
   };
 };
