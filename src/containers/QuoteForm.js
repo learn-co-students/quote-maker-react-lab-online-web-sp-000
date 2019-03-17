@@ -82,19 +82,8 @@ class QuoteForm extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {};
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    addQuote: () => {
-      dispatch(addQuote());
-    }
-  };
-};
 
 export default connect(
-  mapStateToProps,
-  // mapDispatchToProps
+  null,
   { addQuote }
 )(QuoteForm);

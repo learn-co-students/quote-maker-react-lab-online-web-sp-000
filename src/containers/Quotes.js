@@ -32,13 +32,7 @@ class Quotes extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { quotes: state.quotes };
-};
-const mapDispatchToProps = dispatch => {
-  return { removeQuote, upvoteQuote, downvoteQuote };
-};
 export default connect(
-  mapStateToProps,
+  state => ({ quotes: state.quotes }),
   { removeQuote, upvoteQuote, downvoteQuote }
 )(Quotes);

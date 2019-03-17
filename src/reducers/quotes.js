@@ -18,32 +18,32 @@ export default (state = [], action) => {
     default:
       return state;
   }
+  function possibleRefactoring() {
+    // const actions = () => {
+    //   const ADD_QUOTE = () => {
+    //     return [...this.quotes, this.action.quote];
+    //   }
+    //   function REMOVE_QUOTE() {
+    //     return [...this.quotes.slice(0, index), ...this.quotes.slice(index + 1)];
+    //   }
+    //   function UPVOTE_QUOTE() {
+    //     this.quotes[this.index].votes += 1; // allowed to mutate this clone
+    //     return this.quotes;
+    //   }
+    //   function DOWNVOTE_QUOTE() {
+    //     if (this.quote.votes > 0) this.quote.votes -= 1; // allowed to mutate this clone
+    //     return this.quotes;
+    //   }
+    // };
+    // const snakeToCamel = str => {
+    //   if (typeof str !== "string") return;
+    //   const lower = str.toLowerCase();
+    //   const parts = lower.split("_");
+    //   const humps = parts.splice(1).map(s => {
+    //     return s[0].toUpperCase() + s.slice(1);
+    //   });
+    //   return [parts[0], ...humps].join("");
+    // };
+    // return actions[action.type] ? { ...state, quotes: actions[action.type]() } : state;
+  }
 };
-
-// const actions = () => {
-//   const ADD_QUOTE = () => {
-//     return [...this.quotes, this.action.quote];
-//   }
-//   function REMOVE_QUOTE() {
-//     return [...this.quotes.slice(0, index), ...this.quotes.slice(index + 1)];
-//   }
-//   function UPVOTE_QUOTE() {
-//     this.quotes[this.index].votes += 1; // allowed to mutate this clone
-//     return this.quotes;
-//   }
-//   function DOWNVOTE_QUOTE() {
-//     if (this.quote.votes > 0) this.quote.votes -= 1; // allowed to mutate this clone
-//     return this.quotes;
-//   }
-// };
-// const snakeToCamel = str => {
-//   if (typeof str !== "string") return;
-//   const lower = str.toLowerCase();
-//   const parts = lower.split("_");
-//   const humps = parts.splice(1).map(s => {
-//     return s[0].toUpperCase() + s.slice(1);
-//   });
-//   return [parts[0], ...humps].join("");
-// };
-
-// return actions[action.type] ? { ...state, quotes: actions[action.type]() } : state;
