@@ -1,23 +1,39 @@
-export default (state = [], action) => {
-  let index;
+export default (state = [{
+  author: "me",
+  content: "yes",
+  id: 1,
+  votes:0
+}], action) => {
+
+  let quoteIndex;
+  let quote;
 
   switch(action.type){
     case "ADD_QUOTE":
-      return [...state, action.quote]
+      return [...state, action.quote];
+
     case "REMOVE_QUOTE":
-      return state.filter(quote => quote.id !== action.quoteId)
+      let newQuotes = state.filter(quote => quote.id !== action.quoteId);
+      return newQuotes;
+
     case "UPVOTE_QUOTE":
-      index = state.findIndex(q => q.id === action.quoteId)
-      let upvoted = state;
-      upvoted[index].votes++;
-      return upvoted;
+      quoteIndex = state.findIndex(quote => quote.id === action.quoteId);
+      quote = state[quoteIndex];
+      return [
+        ...state.slice(0, quoteIndex),
+        Object.assign({}, quote, { votes: quote.votes += 1 }),
+        ...state.slice(quoteIndex + 1)
+      ];
+
     case "DOWNVOTE_QUOTE":
-      index = state.findIndex(q => q.id === action.quoteId)
-      let downvoted = state;
-      if (downvoted[index].votes > 0){
-        downvoted[index].votes--;
-      }
-      return downvoted;
+        quoteIndex = state.findIndex(quote => quote.id === action.quoteId);
+        quote = state[quoteIndex];
+        return [
+          ...state.slice(0, quoteIndex),
+          Object.assign({}, quote, { votes: quote.votes -= 1 }),
+          ...state.slice(quoteIndex + 1)
+        ];
+
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const QuoteCard = ({ quoteInfo, upvote, downvote }) =>
+const QuoteCard = ({ quoteInfo, upvoteQuote, downvoteQuote, removeQuote }) =>{
+  return(
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
@@ -14,20 +15,21 @@ const QuoteCard = ({ quoteInfo, upvote, downvote }) =>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => upvote(quoteInfo.id)}
+            onClick={() => upvoteQuote(quoteInfo.id)}
           >
             Upvote
           </button>
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => downvote(quoteInfo.id)}
+            onClick={() => downvoteQuote(quoteInfo.id)}
           >
             Downvote
           </button>
           <button
             type="button"
             className="btn btn-danger"
+            onClick={() => removeQuote(quoteInfo.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -35,6 +37,7 @@ const QuoteCard = ({ quoteInfo, upvote, downvote }) =>
         <div>Votes: {quoteInfo.votes}</div>
       </div>
     </div>
-  </div>;
+  </div>
+  )};
 
 export default QuoteCard;
