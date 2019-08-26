@@ -15,6 +15,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
+              <QuoteCard />
               {/*
                 TODO:
 
@@ -28,5 +29,10 @@ class Quotes extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removeQuote: data => dispatch({type: 'REMOVE_QUOTE', payload: data}) 
+  }
+}
 //add arguments to connect as needed
 export default connect()(Quotes);
