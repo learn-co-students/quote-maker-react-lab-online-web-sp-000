@@ -1,5 +1,5 @@
 export const addQuote = (quote) => {
-    // console.log('obj in action: ', quote)
+    console.log('obj', quote)
     return {
       type: 'ADD_QUOTE',
       quote: quote

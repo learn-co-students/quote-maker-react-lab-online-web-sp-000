@@ -17,7 +17,7 @@ export default (state = [], action) => {
           id: quote.id,
           content: quote.content,
           author: quote.author,
-          votes: quote.votes + 1
+          votes: quote.votes += 1
         }
       ];
 
@@ -33,7 +33,7 @@ export default (state = [], action) => {
             id: quote.id,
             content: quote.content,
             author: quote.author,
-            votes: quote.votes - 1
+            votes: quote.votes -= 1
           }
         ];
       }
