@@ -36,7 +36,6 @@ class QuoteForm extends Component {
   };
 
   render() {
-    // console.log('quote form:', this);
     return (
       <div className='container'>
         <div className='row'>
