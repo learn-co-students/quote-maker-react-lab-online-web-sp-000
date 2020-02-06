@@ -11,8 +11,6 @@ export default (state = [], action) => {
     case 'REMOVE_QUOTE':
       return state.filter((quote) => quote.id !== action.quoteId);
     case 'UPVOTE_QUOTE':
-      console.log('upvote quote:', action);
-      console.log('new state', state);
       return state.map((quote) =>
         quote.id === action.quoteId ? { ...quote, votes: ++quote.votes } : quote
       );
