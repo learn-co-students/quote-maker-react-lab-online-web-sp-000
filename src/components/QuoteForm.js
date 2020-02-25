@@ -13,27 +13,29 @@ class QuoteForm extends Component {
   }
 
   handleOnChange = event => {
-    var name = event.target.id;
+    var name = event.target.name;
     this.setState({[name]: event.target.value});
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.setState({...this.state, id: uuid()})
-    console.log(this.state)
+    
+    // this.setState({...this.state, id: newID})
     this.props.submitQuote(this.state)
+    // this.setState({...this.state, id: uuid()}, () => this.props.submitQuote(this.state))
+    
     this.setState({
       id: "",
       content: "",
       author: "",
       votes: 0 
     })
+  }
   
     // Handle Form Submit event default
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
-  }
 
   
 
@@ -53,7 +55,7 @@ class QuoteForm extends Component {
                     <div className="col-md-5">
                       <textarea
                         className="form-control"
-                        id="content"
+                        name="content"
                         value={this.state.content}
                         onChange={this.handleOnChange}
                       />
@@ -64,7 +66,7 @@ class QuoteForm extends Component {
                     <div className="col-md-5">
                       <input
                         className="form-control"
-                        id="author"
+                        name="author"
                         type="text"
                         value={this.state.author}
                         onChange={this.handleOnChange}

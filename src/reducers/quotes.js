@@ -1,26 +1,40 @@
+import uuid from "uuid";
+
 export default (state = [], action) => {
-
-  switch(action.type) {
-   
-    case("ADD_QUOTE"): 
-    console.log(action)
-    return state = [...state, action.quote];
-
-    case("REMOVE_QUOTE"):
-      let foundQuote = state.findIndex(quote => quote.id === action.QuoteId)
-    
-      return state = [...state.slice(0, foundQuote), ...state.slice(foundQuote + 1)]
-
+  let index
+  let quote
 
   
+console.log(action)
+switch (action.type) {
+  case 'ADD_QUOTE':
+    return state.concat(action.quote);
 
-    case("UPVOTE_QUOTE"):
-    return state = [...state];
+  case 'REMOVE_QUOTE':
+    return state.filter(quote => quote.id !== action.quoteId);
+  
+  case 'UPVOTE_QUOTE':
+    index = state.findIndex(quote => quote.id === action.quoteId);
+    quote = state[index];
+    return [
+      ...state.slice(0, index),
+      Object.assign({}, quote, { votes: quote.votes += 1 }),
+      ...state.slice(index + 1)
+    ];
 
-    case("DOWNVOTE_QUOTE"):
-    return state = [...state];
+  case 'DOWNVOTE_QUOTE':
+    index = state.findIndex(quote => quote.id === action.quoteId);
+    quote = state[index];
+    if (quote.votes > 0) {
+      return [
+        ...state.slice(0, index),
+        Object.assign({}, quote, {votes: quote.votes -= 1}),
+        ...state.slice(index + 1)
+      ];
+    }
+    return state;
 
     default:
-    return state;
-  }
+      return state;
+}
 }
