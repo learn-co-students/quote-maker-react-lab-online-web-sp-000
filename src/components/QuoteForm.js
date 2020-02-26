@@ -6,41 +6,32 @@ import { addQuote } from '../actions/quotes';
 class QuoteForm extends Component {
 
   state = {
-    id: "",
-    content: "",
-    author: "",
-    votes: 0  
+    //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
   handleOnChange = event => {
-    var name = event.target.name;
-    this.setState({[name]: event.target.value});
+    // Handle Updating Component State
+    const {value, name} = event.target;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleOnSubmit = event => {
-    event.preventDefault();
-    
-    // this.setState({...this.state, id: newID})
-    this.props.submitQuote(this.state)
-    // this.setState({...this.state, id: uuid()}, () => this.props.submitQuote(this.state))
-    
-    this.setState({
-      id: "",
-      content: "",
-      author: "",
-      votes: 0 
-    })
-  }
-  
     // Handle Form Submit event default
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
-
-  
-
-
-
+    event.preventDefault();
+    const quote = {...this.state, id: uuid() };
+    this.props.addQuote(quote);
+    this.setState({
+      content: '',
+      author: ''
+    });
+  }
 
   render() {
     return (
@@ -49,7 +40,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form onSubmit={this.handleOnSubmit} className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -66,8 +57,8 @@ class QuoteForm extends Component {
                     <div className="col-md-5">
                       <input
                         className="form-control"
-                        name="author"
                         type="text"
+                        name="author"
                         value={this.state.author}
                         onChange={this.handleOnChange}
                       />
@@ -88,12 +79,5 @@ class QuoteForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-      submitQuote: ((newQuote) => {
-        dispatch(addQuote(newQuote))
-      })
-    }
-}
 //add arguments to connect as needed
-export default connect(null, mapDispatchToProps)(QuoteForm);
+export default connect(null, {addQuote})(QuoteForm);
