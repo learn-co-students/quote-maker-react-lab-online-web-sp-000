@@ -1,4 +1,9 @@
+import uuid from 'uuid';
+ 
+const id = uuid();
+
 export default (state = [], action) => {
+<<<<<<< HEAD
   let index;
   let quote;
 
@@ -36,3 +41,20 @@ export default (state = [], action) => {
       return state;
   }
 }
+=======
+  switch (action.type) {
+        case "ADD_QUOTE":
+            return {...state,
+              ...state.quots
+            };
+        case "REMOVE_QUOTE":
+            return {};
+        case "UPVOTE_QUOTE":
+            return {};
+        case "DOWNVOTE_QUOTE":
+            return {};
+        default:
+  return state;
+  }
+}
+>>>>>>> 9bf9d8e9264df74816f0b5dc9bf6cfee5cabc62b
