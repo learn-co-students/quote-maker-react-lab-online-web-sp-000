@@ -1,15 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux'
-import rootReducer from './reducers/index'
+<html>
+<head>
+  <title>Building Forms Lab</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+  <meta name="author" content="Mark Thomas">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
 
-let store = createStore(rootReducer)
+<body>
+  <div id="root">
+    <h1>
+      Loading!
+    </h1>
+  </div>
+    <script src='http://localhost:7700/dist/app.js'></script>
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+</body>
+</html>
