@@ -8,13 +8,14 @@ export default (state = [], action) => {
       console.log('in remove_quote')
       return {
         state 
-      }
+      }     //! still need to write this
+
     
     case 'UPVOTE_QUOTE': 
-    //! still need to write this
+      console.log('in upvote_quote')
       return {
         state 
-      }
+      }  //! still need to write this
     
     case 'DOWNVOTE_QUOTE': 
     //! still need to write this

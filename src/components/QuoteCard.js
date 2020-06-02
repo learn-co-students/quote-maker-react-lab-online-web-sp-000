@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
+
 const QuoteCard = (props) =>
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">

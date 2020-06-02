@@ -32,7 +32,7 @@ class QuoteForm extends Component {
     newQuote.content = this.state.content;
     newQuote.author = this.state.author;
     newQuote.id = uuid();
-    console.log('newQuote', newQuote);
+    console.log('newQuote', newQuote); // logs out new quote just before it is dispatched
     //? Pass quote object to action creator
     this.props.addQuote(newQuote)
 

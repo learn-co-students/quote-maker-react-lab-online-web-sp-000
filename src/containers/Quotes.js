@@ -6,6 +6,7 @@ import {removeQuote, downvoteQuote, upvoteQuote } from '../actions/quotes'
 class Quotes extends Component {
 
   render() {
+    console.log(this.props.quotes[0])
     let quoteCardRender = [];
     if (this.props.quotes) {
       quoteCardRender = this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote}/>)

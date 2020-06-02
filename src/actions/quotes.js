@@ -15,6 +15,7 @@ export const removeQuote = (quoteId) => {
 };
 
 export const upvoteQuote = (quoteId) => {
+  console.log(quoteId);
   return {
     type: 'UPVOTE_QUOTE',
     quoteId
