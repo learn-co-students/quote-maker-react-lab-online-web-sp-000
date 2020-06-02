@@ -42,11 +42,9 @@ class QuoteForm extends Component {
       author: "",
       id: ""    
     })
-    console.log(this.state)
   }
 
   render() {
-    console.log('in QuoteForm render, this.props', this.props.props) //! whyyyyy are my props nested under props???
     return (
       <div className="container">
         <div className="row">
@@ -93,10 +91,7 @@ class QuoteForm extends Component {
 
 };
 
-
-
 const mapStateToProps = (state) => {
-  console.log('in mapStateToProps, state', state)
   return {
     quotes: state.quotes
   };

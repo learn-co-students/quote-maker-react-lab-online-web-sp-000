@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 
 const QuoteCard = (props) =>
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
-          <p>{props.quote.content}</p>
+          <p>- content {props.quote.content}</p>
           <footer>- author <cite title="Source Title">{props.quote.author}</cite></footer>
         </blockquote>
       </div>
@@ -18,6 +20,7 @@ const QuoteCard = (props) =>
             Upvote
           </button>
           <button
+            onClick={(props) => props.dispatch(props.upvoteQuote(props.quote.id))}
             type="button"
             className="btn btn-secondary"
           >
@@ -35,4 +38,9 @@ const QuoteCard = (props) =>
     </div>
   </div>;
 
-export default QuoteCard;
+// function mapStateToProps(state) { 
+//   return { quotes: state.quotes }
+// }
+
+//export default QuoteCard;
+export default connect(null, null)(QuoteCard);
