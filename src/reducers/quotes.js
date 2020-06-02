@@ -2,10 +2,9 @@ export default (state = [], action) => {
   switch (action.type) {
 
     case 'ADD_QUOTE':
-      console.log('in add_quote action, adding ', action.quote)
       return {
         ...state,
-        quotes: [...state.quotes, action.quote]
+        quotes: [...state, action.quote]
       }
     
     case 'REMOVE_QUOTE': 

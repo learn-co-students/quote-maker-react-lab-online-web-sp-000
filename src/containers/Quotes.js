@@ -6,6 +6,14 @@ import {removeQuote, downvoteQuote, upvoteQuote } from '../actions/quotes'
 class Quotes extends Component {
 
   render() {
+    console.log('in Quotes container, this.props', this.props)
+    console.log('in Quotes container, this.props.props ', this.props.quotes.quotes)
+    let p = [];
+    //! whyyyyy are quotes nested under quotes? Where is this happening?
+    if (this.props.quotes.quotes) {
+      p = this.props.quotes.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote}/>)
+    }
+
     return (
       <div>
         <hr />
@@ -16,8 +24,8 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
+              {p}
               {/* Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes */}
-              {this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote}/>)}
             </div>
           </div>
         </div>
