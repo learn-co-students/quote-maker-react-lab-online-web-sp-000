@@ -7,7 +7,7 @@ class Quotes extends Component {
 
   render() {
     console.log('in Quotes container, this.props', this.props)
-    console.log('in Quotes container, this.props.props ', this.props.quotes.quotes)
+    console.log('in Quotes container, this.props ', this.props.quotes.quotes)
     let p = [];
     //! whyyyyy are quotes nested under quotes? Where is this happening?
     if (this.props.quotes.quotes) {
