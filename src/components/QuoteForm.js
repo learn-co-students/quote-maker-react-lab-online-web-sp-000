@@ -9,7 +9,8 @@ class QuoteForm extends Component {
     //? set up a controlled form with internal state
     content: "",
     author: "",
-    id: ""
+    id: "",
+    votes: 0
   }
 
 
@@ -32,6 +33,7 @@ class QuoteForm extends Component {
     newQuote.content = this.state.content;
     newQuote.author = this.state.author;
     newQuote.id = uuid();
+    newQuote.votes = 0;
     console.log('newQuote', newQuote); // logs out new quote just before it is dispatched
     //? Pass quote object to action creator
     this.props.addQuote(newQuote)
@@ -40,7 +42,7 @@ class QuoteForm extends Component {
     this.setState({
       content: "",
       author: "",
-      id: ""    
+      id: ""   
     })
   }
 

@@ -6,10 +6,10 @@ import {removeQuote, downvoteQuote, upvoteQuote } from '../actions/quotes'
 class Quotes extends Component {
 
   render() {
-    console.log(this.props.quotes[0])
     let quoteCardRender = [];
-    if (this.props.quotes) {
-      quoteCardRender = this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote} />)
+    if (this.props.quotes !== []) {
+      console.log(this.props.quotes)
+      quoteCardRender = this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={this.props.removeQuote} upvoteQuote={this.props.upvoteQuote} downvoteQuote={this.props.downvoteQuote} />)
     }
 
     return (
@@ -38,7 +38,14 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+  removeQuote: quoteId => dispatch(removeQuote(quoteId)),
+  upvoteQuote: quoteId => dispatch(upvoteQuote(quoteId)),
+  downvoteQuote: quoteId => dispatch(downvoteQuote(quoteId))
+}}
+
 //add arguments to connect as needed
 //export default connect()(Quotes);
-export default connect(mapStateToProps)(Quotes);
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
 
