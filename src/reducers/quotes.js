@@ -5,19 +5,21 @@ export default (state = [], action) => {
       return state.concat(action.quote)
     
     case 'REMOVE_QUOTE': 
-      console.log('in remove_quote')
+      console.log('in REMOVE_QUOTE reducer', action)
       return {
         state 
       }     //! still need to write this
 
     
     case 'UPVOTE_QUOTE': 
-      console.log('in upvote_quote')
+      console.log('in UPVOTE_QUOTE reducer')
       return {
         state 
       }  //! still need to write this
     
-    case 'DOWNVOTE_QUOTE': 
+    case 'DOWNVOTE_QUOTE':
+      console.log('in DOWNVOTE_QUOTE reducer')
+ 
     //! still need to write this
       return {
         state 

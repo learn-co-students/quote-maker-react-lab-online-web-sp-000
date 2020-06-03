@@ -9,7 +9,7 @@ class Quotes extends Component {
     console.log(this.props.quotes[0])
     let quoteCardRender = [];
     if (this.props.quotes) {
-      quoteCardRender = this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote}/>)
+      quoteCardRender = this.props.quotes.map((singleQuote, index) => <QuoteCard key={index} quote={singleQuote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote} />)
     }
 
     return (
