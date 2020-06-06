@@ -13,7 +13,8 @@ export default (state = [], action) => {
     case "ADD_QUOTE":
       return [...state, action.quote]
     case "REMOVE_QUOTE":
-      return state.filter(quote => quote.id !== action.id);
+      let newArray = state.slice();
+      return newArray.filter(quote => quote.id !== action.quoteId);
     //case "REMOVE_QUOTE":
       // let newArray = [...state];
       // return newArray.filter(quote => quote.id !== action.id);
