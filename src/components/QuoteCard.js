@@ -1,5 +1,5 @@
 import React from 'react';
-
+//The three onClicks below are from the solution code.
 //const QuoteCard = (props) =>
 const QuoteCard = ({ quote, removeQuote, upvoteQuote, downvoteQuote }) => //SOLUTION
   <div>
@@ -12,7 +12,6 @@ const QuoteCard = ({ quote, removeQuote, upvoteQuote, downvoteQuote }) => //SOLU
           <footer>- author <cite title="Source Title">{quote.author}</cite></footer>
         </blockquote>
       </div>
-      //The three onClicks below are from the solution code.
       <div className="float-right">
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
           <button
