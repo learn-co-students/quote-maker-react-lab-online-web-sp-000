@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import QuoteCard from '../components/QuoteCard';
+import { removeQuote } from '../actions/quotes'
+import { upvoteQuote } from '../actions/quotes'
+import { downvoteQuote } from '../actions/quotes'
 
 class Quotes extends Component {
 
@@ -20,6 +23,9 @@ class Quotes extends Component {
 
                 Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
                */}
+               {this.props.quotes.map(quote => {
+                 return <QuoteCard quote={quote} upvoteQuote={this.props.upvoteQuote} downvoteQuote={this.props.downvoteQuote} removeQuote={this.props.removeQuote} />
+               })}
             </div>
           </div>
         </div>
@@ -29,4 +35,26 @@ class Quotes extends Component {
 }
 
 //add arguments to connect as needed
-export default connect()(Quotes);
+const mapStateToProps = (state) => {
+  return {
+    quotes: state.quotes
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeQuote: () => {
+      dispatch(removeQuote())
+    },
+
+    upvoteQuote: () => {
+      dispatch(upvoteQuote())
+    },
+
+    downvoteQuote: () => {
+      dispatch(downvoteQuote())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
