@@ -6,7 +6,7 @@ import { addQuote } from '../actions/quotes';
 class QuoteForm extends Component {
 
   state = {
-    quote: '',
+    content: '',
     author: ''
   }
 
@@ -18,7 +18,18 @@ class QuoteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.addQuote(this.state)
+    const { content, author } = this.state
+    const quote = {
+      content,
+      author,
+      votes: 0,
+      id: uuid()
+    }
+    this.props.addQuote(quote)
+    this.setState({
+      content: '',
+      author: ''
+    })
 
     // Handle Form Submit event default
     // Create quote object from state
@@ -33,7 +44,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal" onSubmit={event => this.handleOnSubmit(event)}>
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -41,7 +52,7 @@ class QuoteForm extends Component {
                         className="form-control"
                         name="content"
                         value={this.state.content}
-                        onChange={event => this.handleOnChange(event)}
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -53,7 +64,7 @@ class QuoteForm extends Component {
                         name="author"
                         type="text"
                         value={this.state.author}
-                        onChange={event => this.handleOnChange(event)}
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -72,5 +83,10 @@ class QuoteForm extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    addQuote: quote => dispatch(addQuote(quote))
+  }
+}
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);
