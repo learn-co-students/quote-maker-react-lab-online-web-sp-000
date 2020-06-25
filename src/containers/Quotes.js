@@ -22,8 +22,6 @@ class Quotes extends Component {
                      <QuoteCard quote={quote}
                         key={quote.id}
                         removeQuote={this.props.removeQuote}
-                        upvoteQuote={this.props.upvoteQuote}
-                        downvoteQuote={this.props.downvoteQuote}
                      />
                    )
                  }
@@ -40,11 +38,11 @@ const mapStateToProps = state => {
   return { quotes: state.quotes }
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeQuote: id => dispatch({ type: 'REMOVE_QUOTE', id: id }),
-  upvoteQuote: id => dispatch({ type: 'UPVOTE_QUOTE', id: id }),
-  downvoteQuote: id => dispatch({ type: 'DOWNVOTE_QUOTE', id: id })
-})
+// const mapDispatchToProps = dispatch => ({
+//   removeQuote: id => dispatch({ type: 'REMOVE_QUOTE', id: id }),
+//   upvoteQuote: id => dispatch({ type: 'UPVOTE_QUOTE', id: id }),
+//   downvoteQuote: id => dispatch({ type: 'DOWNVOTE_QUOTE', id: id })
+// })
 
 //add arguments to connect as needed
-export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
+export default connect(mapStateToProps, { removeQuote })(Quotes);
