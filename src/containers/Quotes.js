@@ -22,6 +22,8 @@ class Quotes extends Component {
                      <QuoteCard quote={quote}
                         key={quote.id}
                         removeQuote={this.props.removeQuote}
+                        upvoteQuote={this.props.upvoteQuote}
+                        downvoteQuote={this.props.downvoteQuote}
                      />
                    )
                  }
@@ -45,4 +47,4 @@ const mapStateToProps = state => {
 // })
 
 //add arguments to connect as needed
-export default connect(mapStateToProps, { removeQuote })(Quotes);
+export default connect(mapStateToProps, { removeQuote, upvoteQuote, downvoteQuote })(Quotes);
