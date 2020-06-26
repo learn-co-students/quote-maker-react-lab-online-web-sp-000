@@ -4,29 +4,33 @@ import { object } from "chai-spies"
 
 
 export const addQuote = (quote) => {
+
     return {
         type: 'ADD_QUOTE',
         quote: Object.assign({}, quote, {votes: 0})
     }
 }
 
-export const removeQuote = (quote) => {
+export const removeQuote = (quoteID) => {
+   
     return {
         type: 'REMOVE_QUOTE',
-        quoteId: quote
+        quoteId: quoteID
     }
 }
 
-export const upvoteQuote = (quote) => {
-    return {
+export const upvoteQuote = (quoteID) => {
+    
+    return ({
         type: 'UPVOTE_QUOTE',
-        quoteId: quote
-    }
+        quoteId: quoteID
+    })
 }
 
-export const downvoteQuote = (quote) => {
+export const downvoteQuote = (quoteID) => {
+  
     return {
         type: 'DOWNVOTE_QUOTE',
-        quoteId: quote
+        quoteId: quoteID
     }
 }
