@@ -16,9 +16,9 @@ class Quotes extends Component {
       author = {quote.author}
       id = {quote.id}
       key = {quote.id}
-      removeQuote={(id) => this.props.remove(id)} 
-      upvoteQuote={(id) => this.props.upvote(id)} 
-      downvoteQuote={(id) => this.props.downvote(id)} 
+      onRemoveQuote={(id) => this.props.remove(id)} 
+      onUpvoteQuote={(id) => this.props.upvote(id)} 
+      onDownvoteQuote={(id) => this.props.downvote(id)} 
       />)
 
     return (
