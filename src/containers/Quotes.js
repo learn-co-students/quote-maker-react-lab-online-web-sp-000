@@ -11,11 +11,12 @@ class Quotes extends Component {
 
   render() {
 
-    const quotes = this.props.quotes.map(quote => <QuoteCard
-      content = {quote.content}
-      author = {quote.author}
-      id = {quote.id}
-      key = {quote.id}
+    const quotes = this.props.quotes.map(q => <QuoteCard
+      content = {q.content}
+      author = {q.author}
+      votes = {q.votes}
+      id = {q.id}
+      key = {q.id}
       onRemoveQuote={(id) => this.props.remove(id)} 
       onUpvoteQuote={(id) => this.props.upvote(id)} 
       onDownvoteQuote={(id) => this.props.downvote(id)} 
