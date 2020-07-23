@@ -15,19 +15,16 @@ class QuoteForm extends Component {
   }
 
   handleOnSubmit = event => {
-    // Handle Form Submit event default
     event.preventDefault();
-    // Create quote object from state
+
     const quote = {
-      quote: this.state.quote,
+      content: this.state.content,
       author: this.state.author,
       id: uuid(),
       votes: 0
     };
-    this.props.addQuote(quote)
-    // Pass quote object to action creator
+    this.props.addQuote(quote);
     this.setState({content: "", author: ""})
-    // Update component state to return to default state
   }
 
   render() {
@@ -37,7 +34,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -63,7 +60,7 @@ class QuoteForm extends Component {
                   </div>
                   <div className="form-group">
                     <div className="col-md-6 col-md-offset-4">
-                      <button type="submit" className="btn btn-default">Add</button>
+                      <button type="submit" className="btn btn-default" >Add</button>
                     </div>
                   </div>
                 </form>
@@ -76,11 +73,6 @@ class QuoteForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-return{
-  addQuote:addQuote
-}
-}
 
 //add arguments to connect as needed
-export default connect(null, mapDispatchToProps)(QuoteForm);
+export default connect(null, {addQuote})(QuoteForm);

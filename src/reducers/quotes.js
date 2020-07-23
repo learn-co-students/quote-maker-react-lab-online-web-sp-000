@@ -8,14 +8,14 @@ export default (state = [], action) => {
 
     case "UPVOTE_QUOTE":
       return state.map(quote=>{
-        if (quote.id == action.quoteId)
+        if (quote.id === action.quoteId)
         return {...quote, votes: ++quote.votes}
         else return quote
       })
 
     case "DOWNVOTE_QUOTE":
         return state.map(quote=>{
-          if (quote.id == action.quoteId && quote.votes > 0)
+          if (quote.id === action.quoteId && quote.votes > 0)
           return {...quote, votes: --quote.votes}
           else return quote
         })
