@@ -5,18 +5,28 @@ import { addQuote } from '../actions/quotes';
 
 class QuoteForm extends Component {
 
-  state = {
+  state = {content: "", author: ""
     //set up a controlled form with internal state
   }
 
   handleOnChange = event => {
+    this.setState({[event.target.name]: event.target.value})
     // Handle Updating Component State
   }
 
   handleOnSubmit = event => {
     // Handle Form Submit event default
+    event.preventDefault();
     // Create quote object from state
+    const quote = {
+      quote: this.state.quote,
+      author: this.state.author,
+      id: uuid(),
+      votes: 0
+    };
+    this.props.addQuote(quote)
     // Pass quote object to action creator
+    this.setState({content: "", author: ""})
     // Update component state to return to default state
   }
 
@@ -32,8 +42,10 @@ class QuoteForm extends Component {
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
+                      onChange={this.handleOnChange}
                         className="form-control"
                         value={this.state.content}
+                        name="content"
                       />
                     </div>
                   </div>
@@ -41,9 +53,11 @@ class QuoteForm extends Component {
                     <label htmlFor="author" className="col-md-4 control-label">Author</label>
                     <div className="col-md-5">
                       <input
+                      onChange={this.handleOnChange}
                         className="form-control"
                         type="text"
                         value={this.state.author}
+                        name="author"
                       />
                     </div>
                   </div>
@@ -62,5 +76,11 @@ class QuoteForm extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+return{
+  addQuote:addQuote
+}
+}
+
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);
