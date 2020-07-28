@@ -12,14 +12,11 @@ class Quotes extends Component {
   render() {
 
     const quotes = this.props.quotes.map(q => <QuoteCard
-      content = {q.content}
-      author = {q.author}
-      votes = {q.votes}
-      id = {q.id}
-      key = {q.id}
-      onRemoveQuote={(id) => this.props.remove(id)} 
-      onUpvoteQuote={(id) => this.props.upvote(id)} 
-      onDownvoteQuote={(id) => this.props.downvote(id)} 
+      quote={q}
+      key={q.id}
+      removeQuote={this.props.removeQuote} 
+      upvoteQuote={this.props.upvoteQuote} 
+      downvoteQuote={this.props.downvoteQuote} 
       />)
 
     return (
@@ -44,9 +41,9 @@ class Quotes extends Component {
 const mapStateToProps = ({ quotes }) => ({ quotes })
 
 const mapDispatchToProps = dispatch => ({
-    remove: (id) => dispatch(removeQuote(id)),
-    upvote: (id) => dispatch(upvoteQuote(id)),
-    downvote: (id) => dispatch(downvoteQuote(id))
+    removeQuote: (id) => dispatch(removeQuote(id)),
+    upvoteQuote: (id) => dispatch(upvoteQuote(id)),
+    downvoteQuote: (id) => dispatch(downvoteQuote(id))
 })
 
 //add arguments to connect as needed
