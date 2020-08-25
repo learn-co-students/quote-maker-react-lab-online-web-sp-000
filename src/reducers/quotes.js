@@ -1,3 +1,12 @@
 export default (state = [], action) => {
-  return state;
+  switch (action.type) {
+    
+    case 'ADD_QUOTE':
+      return [...state, action.quote]
+    case 'REMOVE_QUOTE':
+      console.log(action)
+      return 'hello'
+    default:
+      return state;
+  }
 }
