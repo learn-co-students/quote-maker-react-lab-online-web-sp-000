@@ -7,13 +7,21 @@ class QuoteForm extends Component {
 
   state = {
     //set up a controlled form with internal state
+    id: "",
+    content: "",
+    author:""
   }
 
   handleOnChange = event => {
     // Handle Updating Component State
+    this.setState({
+      [event.target.id]: event.target.value
+    })
   }
 
   handleOnSubmit = event => {
+    event.preventDeafult();
+    this.props.dispatch({type:'ADD_QUOTE', user: this.state})
     // Handle Form Submit event default
     // Create quote object from state
     // Pass quote object to action creator
@@ -27,7 +35,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit} onChange={this.handleOnChange}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -62,5 +70,16 @@ class QuoteForm extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+   
+    users:state.users
+  
+  }
+}
+
+
+
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(mapStateToProps)(QuoteForm);
