@@ -31,13 +31,16 @@ class QuoteForm extends Component {
       ...this.state,
       id: uuid()
     }  
+     if (this.state.content && this.state.author !== "")
      
+     {
     this.props.addQuote(quote) 
     this.setState({
       content: "",
       author: ""
     })
   }
+}
 
   render() {
     return (
@@ -56,6 +59,7 @@ class QuoteForm extends Component {
                         className="form-control"
                         onChange= {this.handleOnChange}
                         value={this.state.content}
+                        
                       />
                       
                     </div>
@@ -69,6 +73,7 @@ class QuoteForm extends Component {
                         type="text"
                         value = {this.state.author}
                         onChange={this.handleOnChange}
+                        
                       />
                     </div>
                   </div>
