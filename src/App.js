@@ -8,7 +8,6 @@ class App extends Component {
       <div className="container-fluid">
         <div className="row title justify-content-center" style={{ paddingTop: '12px' }}>
           <h1>Quote Maker by Malcolm
-            
           </h1>
         </div>
          <QuoteForm/>
