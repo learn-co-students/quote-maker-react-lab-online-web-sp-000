@@ -21,9 +21,9 @@ class QuoteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
+    
     const quote = {}
     this.props.addQuote(this.state)
-    console.log(this.state)
     this.setState({
       content: "",
       author: ""
@@ -76,11 +76,11 @@ class QuoteForm extends Component {
 
 
 const mapStateToProps = (state) => {
-  return {
+  return ({
    
   quotes: state.quotes
   
-  }
+  })
 }
 
 
