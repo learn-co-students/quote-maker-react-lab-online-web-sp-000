@@ -1,6 +1,6 @@
 export function addQuote(quote) {
 return {
-    "type": "ADD_QUOTE",
+    type: "ADD_QUOTE",
     quote: quote
 
 }
@@ -9,7 +9,7 @@ return {
 
 export function removeQuote(quoteId){
  return {
-    "type": "REMOVE_QUOTE",
+    type: "REMOVE_QUOTE",
     quoteId: quoteId
  }
 
@@ -18,7 +18,7 @@ export function removeQuote(quoteId){
 
 export function upvoteQuote(quoteId){
     return {
-    "type": "UPVOTE_QUOTE",
+    type: "UPVOTE_QUOTE",
     quoteId: quoteId
 
     }
@@ -28,7 +28,7 @@ export function upvoteQuote(quoteId){
 export function downvoteQuote(quoteId){
     
     return {
-        "type": "DOWNVOTE_QUOTE",
+        type: "DOWNVOTE_QUOTE",
         quoteId: quoteId
     }
 }
