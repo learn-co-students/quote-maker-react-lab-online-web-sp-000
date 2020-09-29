@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
-import quotes from './quotes';
+import uuid from 'uuid';
+import { stat } from 'fs';
+ 
 
+
+import quotes from './quotes';
+const id = uuid();
 export default combineReducers({
   quotes
 });
