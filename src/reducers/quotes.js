@@ -3,11 +3,10 @@ export default (state = [], action) => {
 
   switch (action.type) {
     case "ADD_QUOTE":
-      return [...state, action.quote];
+      return state.concat(action.quote);
 
     case "REMOVE_QUOTE":
-      updatedQuotes = state.filter((quote) => quote.id !== action.quoteId);
-      return updatedQuotes;
+      return state.filter((quote) => quote.id !== action.quoteId);
 
     case "UPVOTE_QUOTE":
       updatedQuotes = [...state].map((quote) => {

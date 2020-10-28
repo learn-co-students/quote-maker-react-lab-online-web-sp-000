@@ -4,33 +4,8 @@ import QuoteCard from "../components/QuoteCard";
 import { upvoteQuote, downvoteQuote, removeQuote } from "../actions/quotes";
 
 class Quotes extends Component {
-  handleUpvote = (quoteId) => {
-    this.props.upvoteQuote(quoteId);
-  };
-
-  handleDownvote = (quoteId) => {
-    this.props.downvoteQuote(quoteId);
-  };
-
-  handleRemoveQuote = (quoteId) => {
-    this.props.removeQuote(quoteId);
-  };
-
-  renderQuoteCards() {
-    return this.props.quotes.map((quote, id) => {
-      return (
-        <QuoteCard
-          key={id}
-          quote={quote}
-          handleUpvote={this.handleUpvote}
-          handleDownvote={this.handleDownvote}
-          handleRemoveQuote={this.handleRemoveQuote}
-        />
-      );
-    });
-  }
-
   render() {
+    const { quotes, removeQuote, upvoteQuote, downvoteQuote } = this.props;
     return (
       <div>
         <hr />
@@ -41,12 +16,15 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              {this.renderQuoteCards()}
-              {/*
-                TODO:
-
-                Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
-               */}
+              {quotes.map((quote) => (
+                <QuoteCard
+                  key={quote.id}
+                  upvoteQuote={upvoteQuote}
+                  downvoteQuote={downvoteQuote}
+                  removeQuote={removeQuote}
+                  quote={quote}
+                />
+              ))}
             </div>
           </div>
         </div>
