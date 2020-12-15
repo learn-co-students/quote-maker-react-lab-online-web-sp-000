@@ -6,8 +6,10 @@ import { addQuote } from '../actions/quotes';
 class QuoteForm extends Component {
 
   state = {
+    id: uuid(),
     content: "",
-    author: ""
+    author: "",
+    votes: 0
   }
 
   handleOnChange = event => {
@@ -25,8 +27,10 @@ class QuoteForm extends Component {
     event.preventDefault();
     this.props.addQuote(this.state);
     this.setState({
+      id: uuid(),
       content: "",
-      author: ""
+      author: "",
+      votes: 0
     })
   }
 
