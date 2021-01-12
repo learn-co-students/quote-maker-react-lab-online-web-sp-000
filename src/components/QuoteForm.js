@@ -7,17 +7,40 @@ class QuoteForm extends Component {
 
   state = {
     //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
   handleOnChange = event => {
+   
     // Handle Updating Component State
+    
+    //       object literal {}
+    //   destructuring passed in event object ^
+    //    breaking out the target's name attr and input val    
+    const { value, name } = event.target;
+    //use [] to dynamically set name attr to inp val
+    this.setState({
+      [name]: value
+    });
   }
 
   handleOnSubmit = event => {
-    // Handle Form Submit event default
+    // alert('A quote was submitted! '
+    //   + 'content: ' + this.state.content
+    //   + ' author: ' + this.state.author)
+      // Handle Form Submit event default
+    event.preventDefault();
     // Create quote object from state
+    const quote = { ...this.state, id: uuid() };
     // Pass quote object to action creator
+    this.props.addQuote(quote);
+    console.log(quote);
     // Update component state to return to default state
+    this.setState({
+      content: '',
+      author: ''
+    })
   }
 
   render() {
@@ -27,13 +50,18 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                {/* add form sub listener*/}
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
                         className="form-control"
                         value={this.state.content}
+                        //add name attribute
+                        name="content"
+                        //add listener
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -44,6 +72,10 @@ class QuoteForm extends Component {
                         className="form-control"
                         type="text"
                         value={this.state.author}
+                        //add name attribute
+                        name="author"
+                        //add listener
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -63,4 +95,4 @@ class QuoteForm extends Component {
 }
 
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, { addQuote })(QuoteForm);
