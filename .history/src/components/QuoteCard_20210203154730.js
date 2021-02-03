@@ -20,7 +20,6 @@ const QuoteCard = ({ quote, removeQuote, upvoteQuote, downvoteQuote }) =>
           </button>
           <button
             type="button"
-            onClick={() => downvoteQuote(quote.id)} 
             className="btn btn-secondary"
           >
             Downvote
@@ -32,7 +31,7 @@ const QuoteCard = ({ quote, removeQuote, upvoteQuote, downvoteQuote }) =>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div>Votes: {quote.votes}</div>
+        {/* <div>Votes: {Render Quote Votes}</div> */}
       </div>
     </div>
   </div>;

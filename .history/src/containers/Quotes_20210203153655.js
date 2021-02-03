@@ -34,10 +34,5 @@ class Quotes extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return ({
-    quotes: state.quotes
-  })
-}
 //add arguments to connect as needed
-export default connect(mapStateToProps, {removeQuote, upvoteQuote, downvoteQuote})(Quotes);
+export default connect()(Quotes);
