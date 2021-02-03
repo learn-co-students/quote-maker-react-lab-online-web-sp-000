@@ -14,7 +14,7 @@
     "jsdom": "^9.9.1",
     "mocha": "^5.2.0",
     "mocha-multi": "^1.0.1",
-    "react-scripts": "^3.4.4"
+    "react-scripts": "^3.4.4",
   },
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -43,17 +43,5 @@
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./",
     "test:watch": "npm run test -- --watch",
     "eject": "react-scripts eject"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

@@ -42,7 +42,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
+                <form className="form-horizontal">
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -82,4 +82,4 @@ class QuoteForm extends Component {
 }
 
 //add arguments to connect as needed
-export default connect(null, { addQuote})(QuoteForm);
+export default connect()(QuoteForm);
