@@ -1,15 +1,13 @@
 export default (state = [], action) => {
-console.log('🚀 ~ file: quotes.js ~ line 2 ~ action', action);
 console.log('🚀 ~ file: quotes.js ~ line 2 ~ state', state);
 
-let index;
-let quote;
-// const 
-switch (action.type) {
-  
-  case 'ADD_QUOTE':
-    console.log('🚀 ~ file: quotes.js ~ line 2 ~ action', action);
-    return state.concat(action.quote);
+    let index;
+    let quote;
+  // const 
+    switch (action.type) {
+
+    case 'ADD_QUOTE':
+      return state.concat(action.quote);
     
       case 'REMOVE_QUOTE':
       return state.filter(quote => quote.id !== action.quoteId);
