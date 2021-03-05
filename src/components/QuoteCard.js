@@ -1,11 +1,13 @@
 import React from 'react';
 
 const QuoteCard = (props) =>
+
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
-          {/* <p>{Render Quote Content}</p> */}
+          {console.log(props.quote)}
+          {/* <p>{props.quote.content}</p> */}
           {/* <footer>- author <cite title="Source Title">{Render Quote Author}</cite></footer> */}
         </blockquote>
       </div>
@@ -14,18 +16,21 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-primary"
+            onClick={props.upvoteQuote} //I think need to have (props.qoute.id) as argument
           >
             Upvote
           </button>
           <button
             type="button"
             className="btn btn-secondary"
+            onClick={props.downvoteQuote} //I think need to have (props.qoute.id) as argument
           >
             Downvote
           </button>
           <button
             type="button"
             className="btn btn-danger"
+            
           >
             <span aria-hidden="true">&times;</span>
           </button>
