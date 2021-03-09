@@ -3,13 +3,28 @@ import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { addQuote } from '../actions/quotes';
 
+
 class QuoteForm extends Component {
 
   state = {
     //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
   handleOnChange = event => {
+    if(event.target.name === 'content') {
+      this.setState({
+        ...this.state, 
+        content: event.target.value
+      })
+    }
+    if(event.target.name === 'author') {
+      this.setState({
+        ...this.state,
+        author: event.target.value
+      })
+    }
     // Handle Updating Component State
   }
 
@@ -18,7 +33,21 @@ class QuoteForm extends Component {
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
+    event.preventDefault()
+  
+
+   
+    const quote = {...this.state, id: uuid(), votes: 0} //THE ERROR IS FROM HERE !!
+    this.props.addQuote(quote)
+    this.setState({
+      content: '',
+      author: ''
+    })
+    
+
+
   }
+
 
   render() {
     return (
@@ -27,13 +56,15 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={(event) => this.handleOnSubmit(event)}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
                         className="form-control"
                         value={this.state.content}
+                        onChange={(event) => this.handleOnChange(event)}
+                        name="content"
                       />
                     </div>
                   </div>
@@ -43,7 +74,9 @@ class QuoteForm extends Component {
                       <input
                         className="form-control"
                         type="text"
+                        onChange={(event) => this.handleOnChange(event)}
                         value={this.state.author}
+                        name="author"
                       />
                     </div>
                   </div>
@@ -62,5 +95,13 @@ class QuoteForm extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    addQuote: (quote) => {
+      dispatch(addQuote(quote))
+    }
+  }
+}
+
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);
