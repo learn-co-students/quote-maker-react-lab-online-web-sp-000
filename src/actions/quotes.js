@@ -1,17 +1,18 @@
 // TODO: Create action creators as defined in tests
 
+
 export const addQuote = (quote) => {
-    console.log(quote)
+   // console.log(`this is the quote value in the action: ${JSON.stringify(quote)}`)
     return { 
         type: 'ADD_QUOTE',
         
         quote: quote
-    
-        
+  
     }
 }
 
 export const removeQuote = (quoteId) => {
+    console.log(quoteId)
     return {
         type: 'REMOVE_QUOTE',
        
@@ -25,7 +26,8 @@ export const upvoteQuote = (quoteId) => {
     return {
         type: 'UPVOTE_QUOTE',
 
-        quoteId: quoteId
+        quoteId: quoteId, 
+        // votes: votes
         
         
     }

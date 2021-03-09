@@ -15,11 +15,13 @@ class QuoteForm extends Component {
   handleOnChange = event => {
     if(event.target.name === 'content') {
       this.setState({
+        ...this.state, 
         content: event.target.value
       })
     }
     if(event.target.name === 'author') {
       this.setState({
+        ...this.state,
         author: event.target.value
       })
     }
@@ -32,9 +34,10 @@ class QuoteForm extends Component {
     // Pass quote object to action creator
     // Update component state to return to default state
     event.preventDefault()
-    //let quote = Object.assign(...this.state)
-    //console.log(quote)
-    const quote = {...this.state, id: uuid(), votes: 0}
+  
+
+   
+    const quote = {...this.state, id: uuid(), votes: 0} //THE ERROR IS FROM HERE !!
     this.props.addQuote(quote)
     this.setState({
       content: '',
@@ -53,14 +56,14 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
+                <form className="form-horizontal" onSubmit={(event) => this.handleOnSubmit(event)}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
                         className="form-control"
                         value={this.state.content}
-                        onChange={this.handleOnChange}
+                        onChange={(event) => this.handleOnChange(event)}
                         name="content"
                       />
                     </div>
@@ -71,7 +74,7 @@ class QuoteForm extends Component {
                       <input
                         className="form-control"
                         type="text"
-                        onChange={this.handleOnChange}
+                        onChange={(event) => this.handleOnChange(event)}
                         value={this.state.author}
                         name="author"
                       />
