@@ -60,8 +60,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-
-//add arguments to connect as needed
 export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
 
-// { removeQuote, upvoteQuote, downvoteQuote}
