@@ -28,6 +28,8 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-danger"
+            /* TODO: Fix this */
+            onClick={props.removeQuote(props.quote.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>

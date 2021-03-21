@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addQuote, 
+         removeQuote, 
+         upvoteQuote, 
+         downvoteQuote } from '../actions/quotes';
 import QuoteCard from '../components/QuoteCard';
 
 class Quotes extends Component {
@@ -21,7 +25,13 @@ class Quotes extends Component {
                 Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
                */}
                {this.props.quotes.map(quote => {
-                  return <QuoteCard key={quote.quoteId} quote={quote} />
+                  return <QuoteCard key={quote.id} 
+                                    /* TODO: Fix these */
+                                    quote={quote} 
+                                    addQuote={addQuote}
+                                    removeQuote={removeQuote}
+                                    upvoteQuote={upvoteQuote}
+                                    downvoteQuote={downvoteQuote} />
                })}
             </div>
           </div>
