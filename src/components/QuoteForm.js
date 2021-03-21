@@ -19,16 +19,12 @@ class QuoteForm extends Component {
 
   handleOnChange = event => {
     // Handle Updating Component State
-    let contentInput, authorInput
-    if (event.target.name === "content") {
-       contentInput = event.target.value;
-    } else {
-       authorInput = event.target.value;
-    }
+   //  event.preventDefault();
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
-       content: contentInput,
-       author: authorInput
-    })
+       [name]: value
+    });
   }
 
   handleOnSubmit = event => {
@@ -38,6 +34,10 @@ class QuoteForm extends Component {
     // Update component state to return to default state
     event.preventDefault();
     this.props.addQuote(this.state);
+    this.setState({
+       content: '',
+       author: ''
+    });
   }
 
   render() {
@@ -47,14 +47,14 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={event => this.handleOnSubmit(event)}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
                         className="form-control"
                         name="content"
-                        onChange={event => this.handleOnChange(event)}
+                        onChange={this.handleOnChange}
                         value={this.state.content}
                       />
                     </div>
@@ -65,7 +65,7 @@ class QuoteForm extends Component {
                       <input
                         className="form-control"
                         name="author"
-                        onChange={event => this.handleOnChange(event)}
+                        onChange={this.handleOnChange}
                         type="text"
                         value={this.state.author}
                       />
@@ -73,10 +73,13 @@ class QuoteForm extends Component {
                   </div>
                   <div className="form-group">
                     <div className="col-md-6 col-md-offset-4">
-                      <button type="submit" className="btn btn-default" onSubmit={this.handleOnSubmit}>Add</button>
+                      <button type="submit" className="btn btn-default">Add</button>
                     </div>
                   </div>
+                  {this.state.content}
+                  {this.state.author}
                 </form>
+                
               </div>
             </div>
           </div>
@@ -90,7 +93,8 @@ class QuoteForm extends Component {
 const mapDispatchToProps = (dispatch) => {
    // return an object calling dispatch addQuote as argument
    return {
-      addQuote: () => dispatch(addQuote())
+      addQuote: quoteFormData => 
+         dispatch(addQuote(quoteFormData))
    }
 }
 

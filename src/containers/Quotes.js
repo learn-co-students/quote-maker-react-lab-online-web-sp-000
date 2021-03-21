@@ -20,6 +20,9 @@ class Quotes extends Component {
 
                 Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
                */}
+               {this.props.quotes.map(quote => {
+                  return <QuoteCard key={quote.quoteId} quote={quote} />
+               })}
             </div>
           </div>
         </div>
@@ -28,5 +31,14 @@ class Quotes extends Component {
   }
 }
 
+// connect to redux state so to render quotes
+const mapStateToProps = state => {
+   console.log(state)
+   return {
+      quotes: state.quotes
+   }
+}
+
+
 //add arguments to connect as needed
-export default connect()(Quotes);
+export default connect(mapStateToProps)(Quotes);
