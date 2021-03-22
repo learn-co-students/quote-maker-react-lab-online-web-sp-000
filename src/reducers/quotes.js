@@ -1,19 +1,21 @@
 export default (state = [], action) => {
+  // let quote = state.find(quote => quote.id === action.quoteId)
   switch(action.type) {
     case 'ADD_QUOTE':
-      console.log(state)
       return [...state, action.quote];
     case 'REMOVE_QUOTE':
-      console.log(state);
-      return [...state];
+      return  state.filter(quote => quote.id !== action.quoteId)
     case 'UPVOTE_QUOTE':
-      console.log(state);
-      return [...state];
+      let newUpVotes = state.find(quote => quote.id === action.quoteId).votes += 1
+      return [...state, ...newUpVotes];
     case 'DOWNVOTE_QUOTE':
-      console.log(state);
-      return [...state];
+      let quoteVotes = state.find(quote => quote.id === action.quoteId).votes
+      if (quoteVotes > 0 ) {
+        return [...state, ...state.find(quote => quote.id === action.quoteId).votes -= 1 ]
+    }else {
+      return [...state]
+    }
     default:
       return state;
   }
-    
 }
