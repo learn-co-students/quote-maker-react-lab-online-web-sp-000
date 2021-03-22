@@ -49,6 +49,12 @@ const mapStateToProps = state => {
    }
 }
 
+const mapDispatchToProps = dispatch => {
+   return {
+      removeQuote: quoteId => dispatch(removeQuote(quoteId))
+   }
+}
+
 
 //add arguments to connect as needed
-export default connect(mapStateToProps)(Quotes);
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);

@@ -24,8 +24,9 @@ export default (state = [], action) => {
          //    }
          // };
          console.log('state: ', state, 'action: ', action)
+         debugger
          return [
-            state.filter(quote => quote.id === action.quote.id)
+            ...state.filter(quote => quote.id !== action.quoteId)
          ];
       default: 
          return state;

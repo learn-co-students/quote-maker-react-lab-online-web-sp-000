@@ -29,7 +29,7 @@ const QuoteCard = (props) =>
             type="button"
             className="btn btn-danger"
             /* TODO: Fix this */
-            onClick={props.removeQuote(props.quote.id)}
+            onClick={() => props.removeQuote(props.quote.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -39,5 +39,11 @@ const QuoteCard = (props) =>
       </div>
     </div>
   </div>;
+
+// const mapDispatchToProps = dispatch => {
+// //    return {
+// //       props.removeQuote: 
+// //    }
+// // }
 
 export default QuoteCard;
