@@ -25,13 +25,13 @@ class Quotes extends Component {
                 Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
                */}
                {this.props.quotes.map(quote => {
-                  return <QuoteCard key={quote.id} 
+                  console.log(quote)
+                  return (<QuoteCard key={quote.id} 
                                     /* TODO: Fix these */
                                     quote={quote} 
-                                    addQuote={addQuote}
                                     removeQuote={removeQuote}
                                     upvoteQuote={upvoteQuote}
-                                    downvoteQuote={downvoteQuote} />
+                                    downvoteQuote={downvoteQuote} />);
                })}
             </div>
           </div>
@@ -50,8 +50,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
+   console.log(dispatch)
    return {
-      removeQuote: quoteId => dispatch(removeQuote(quoteId))
+      removeQuote: quoteId => dispatch(removeQuote(quoteId)),
+      upvoteQuote: quoteId => dispatch(upvoteQuote(quoteId)),
+      downvoteQuote: quoteId => dispatch(downvoteQuote(quoteId))
    }
 }
 

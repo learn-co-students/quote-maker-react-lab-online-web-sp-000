@@ -23,10 +23,28 @@ export default (state = [], action) => {
          //       quoteId: quoteId
          //    }
          // };
-         console.log('state: ', state, 'action: ', action)
-         debugger
+         // console.log('state: ', state, 'action: ', action)
+         // debugger
          return [
             ...state.filter(quote => quote.id !== action.quoteId)
+         ];
+      case "UPVOTE_QUOTE":
+         debugger 
+         console.log(state)
+         return [
+            ...state.map(quote => {
+               if (quote.id === action.quoteId) quote.votes++;
+               return quote
+            })
+         ];
+      case "DOWNVOTE_QUOTE":
+         return [
+            ...state.map(quote => {
+               if (quote.id === action.quoteId) {
+                  quote.votes > 0 ? quote.votes-- : quote.votes
+               }
+               return quote
+            })
          ];
       default: 
          return state;
@@ -34,3 +52,8 @@ export default (state = [], action) => {
    // return state;
 }
 // Action -> Reducer -> New State
+
+
+
+
+
