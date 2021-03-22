@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import QuoteCard from '../components/QuoteCard';
+import { removeQuote } from '../actions/quotes'
+import { upvoteQuote } from '../actions/quotes'
+import { downvoteQuote } from '../actions/quotes'
 
 class Quotes extends Component {
 
   render() {
+    let quotes = this.props.quotes.map((quote, idx) => 
+      <li key={idx}> 
+        <QuoteCard 
+          quote={quote} 
+          removeQuote={this.props.removeQuote} 
+          upvoteQuote={this.props.upvoteQuote} 
+          downvoteQuote = {this.props.downvoteQuote} />
+      </li> );
     return (
       <div>
         <hr />
@@ -15,11 +26,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              {/*
-                TODO:
-
-                Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
-               */}
+              {quotes}
             </div>
           </div>
         </div>
@@ -29,4 +36,25 @@ class Quotes extends Component {
 }
 
 //add arguments to connect as needed
-export default connect()(Quotes);
+
+const mapStateToProps = state =>{
+  return { quotes: state.quotes}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeQuote: (quoteId) => dispatch(removeQuote(quoteId)),
+    upvoteQuote: (quoteId) => dispatch(upvoteQuote(quoteId)),
+    downvoteQuote: (quoteId) => dispatch(downvoteQuote(quoteId))
+  }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     // dispatching actions returned by action creators
+//     increment: () => dispatch(increment()),
+//     decrement: () => dispatch(decrement()),
+//     reset: () => dispatch(reset()),
+//   }
+// }
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
