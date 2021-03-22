@@ -25,8 +25,6 @@ export default (state = [], action) => {
             ...state.filter(quote => quote.id !== action.quoteId)
          ];
       case "UPVOTE_QUOTE":
-         debugger 
-         
          return [
             ...state.map(quote => {
                if (quote.id === action.quoteId) quote.votes++;
