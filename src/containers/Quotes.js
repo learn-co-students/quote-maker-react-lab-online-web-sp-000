@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addQuote, 
-         removeQuote, 
+import { removeQuote, 
          upvoteQuote, 
          downvoteQuote } from '../actions/quotes';
 import QuoteCard from '../components/QuoteCard';
@@ -29,9 +28,9 @@ class Quotes extends Component {
                   return (<QuoteCard key={quote.id} 
                                     /* TODO: Fix these */
                                     quote={quote} 
-                                    removeQuote={removeQuote}
-                                    upvoteQuote={upvoteQuote}
-                                    downvoteQuote={downvoteQuote} />);
+                                    removeQuote={this.props.removeQuote}
+                                    upvoteQuote={this.props.upvoteQuote}
+                                    downvoteQuote={this.props.downvoteQuote} />);
                })}
             </div>
           </div>

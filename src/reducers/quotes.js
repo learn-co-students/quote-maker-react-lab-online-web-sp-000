@@ -1,10 +1,7 @@
-import uuid from 'uuid';
-
 export default (state = [], action) => {
    // console.log('state: ', state, 'action: ', action)
    switch (action.type) {
       case "ADD_QUOTE":
-         const quoteId = uuid();
          // [
          //    {
          //      id: '23423424242-42342423424242-fafdb',
@@ -12,7 +9,6 @@ export default (state = [], action) => {
          //      author: 'Luke Ghenco'
          //    }
          //  ]
-         action.quote.id = quoteId;
          return [
             ...state.concat([action.quote])
          ];
@@ -30,7 +26,7 @@ export default (state = [], action) => {
          ];
       case "UPVOTE_QUOTE":
          debugger 
-         console.log(state)
+         
          return [
             ...state.map(quote => {
                if (quote.id === action.quoteId) quote.votes++;
