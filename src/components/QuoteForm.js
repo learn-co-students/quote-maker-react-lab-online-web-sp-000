@@ -10,7 +10,6 @@ class QuoteForm extends Component {
     author: ''
   }
 
-  //should control its inputs based on internal state
   handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -26,10 +25,8 @@ class QuoteForm extends Component {
       votes: 0
     }
 
-    //should modify the store on handleOnSubmit
     this.props.addQuote(quote)
 
-    //should reset state after form handleOnSubmit
     this.setState({
       content: '',
       author: ''
@@ -48,7 +45,7 @@ class QuoteForm extends Component {
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
-                        onChange={this.HandleOnChange}
+                        onChange={this.handleOnChange}
                         name="content"
                         className="form-control"
                         value={this.state.content}
@@ -59,7 +56,7 @@ class QuoteForm extends Component {
                     <label htmlFor="author" className="col-md-4 control-label">Author</label>
                     <div className="col-md-5">
                       <input
-                        onChange={this.HandleOnChange}
+                        onChange={this.handleOnChange}
                         className="form-control"
                         name="author"
                         type="text"
