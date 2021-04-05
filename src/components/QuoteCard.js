@@ -6,7 +6,7 @@ const QuoteCard = ({quote, removeQuote, upvoteQuote, downvoteQuote}) =>
       <div className="card-block">
         <blockquote className="card-blockquote">
           {quote.content}
-          <footer>- author <cite title="Source Title">{quote.author}</cite></footer>}
+          <footer>- <cite title="Source Title">{quote.author}</cite></footer>
         </blockquote>
       </div>
       <div className="float-right">
@@ -28,7 +28,7 @@ const QuoteCard = ({quote, removeQuote, upvoteQuote, downvoteQuote}) =>
           <button
             type="button"
             className="btn btn-danger"
-            onClick={() => removeQuote(quote.id)} 
+            onClick={() => removeQuote(quote.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>

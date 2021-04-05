@@ -17,14 +17,13 @@ export default function quotes (state = [], action) {
       upVoted = Object.assign({}, quote, { votes: quote.votes += 1 })
       return [...state.slice(0, index), upVoted,...state.slice(index + 1)];
 
-    //should handle DOWNVOTE_QUOTE and do nothing if vote count is 0
     case 'DOWNVOTE_QUOTE':
       index = state.findIndex(quote => quote.id === action.quoteId);
       quote = state[index];
-      downVoted = Object.assign({}, quote, { votes: quote.votes -= 1 })
       if (quote.votes === 0) {
         return state
-      } else {
+      } else if (quote.votes > 0) {
+        downVoted = Object.assign({}, quote, { votes: quote.votes -= 1 })
         return [...state.slice(0, index), downVoted, ...state.slice(index + 1)];
       }
 
