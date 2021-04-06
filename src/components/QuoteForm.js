@@ -6,18 +6,30 @@ import { addQuote } from '../actions/quotes';
 class QuoteForm extends Component {
 
   state = {
-    //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
   handleOnChange = event => {
-    // Handle Updating Component State
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   handleOnSubmit = event => {
-    // Handle Form Submit event default
-    // Create quote object from state
-    // Pass quote object to action creator
-    // Update component state to return to default state
+    alert('A quote was submitted: ');
+    event.preventDefault();
+    const quote = {
+      author: this.state.author,
+      content: this.state.content,
+      id: uuid(),
+      votes: 0
+    }
+    this.props.addQuote(quote);
+    this.setState({
+      content: '',
+      author: ''
+    });
   }
 
   render() {
@@ -34,6 +46,8 @@ class QuoteForm extends Component {
                       <textarea
                         className="form-control"
                         value={this.state.content}
+                        name="content"
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
@@ -43,13 +57,15 @@ class QuoteForm extends Component {
                       <input
                         className="form-control"
                         type="text"
+                        name="author"
                         value={this.state.author}
+                        onChange={this.handleOnChange}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-md-6 col-md-offset-4">
-                      <button type="submit" className="btn btn-default">Add</button>
+                      <button type="submit" className="btn btn-default" onSubmit={this.handleOnSubmit}>Add</button>
                     </div>
                   </div>
                 </form>
@@ -63,4 +79,4 @@ class QuoteForm extends Component {
 }
 
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, { addQuote })(QuoteForm);
