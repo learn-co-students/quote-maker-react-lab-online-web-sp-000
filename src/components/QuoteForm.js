@@ -7,15 +7,23 @@ class QuoteForm extends Component {
 
   state = {
     //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
-  handleOnChange = event => {
+  handleOnChange(e) {
     // Handle Updating Component State
+    this.setState({
+      content: e.target.value,
+      author: e.target.value 
+    });
   }
 
-  handleOnSubmit = event => {
+  handleOnSubmit(e) {
     // Handle Form Submit event default
+    e.preventDefault();
     // Create quote object from state
+    this.props.addQuote(this.state.content);
     // Pass quote object to action creator
     // Update component state to return to default state
   }
