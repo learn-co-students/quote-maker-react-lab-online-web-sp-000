@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import QuoteForm from './components/QuoteForm.js';
+import Quotes from './containers/Quotes.js';
+// import ErrorBoundary from './error_boundary/error_boundary.js'
 
 class App extends Component {
   render() {
@@ -8,8 +11,13 @@ class App extends Component {
           <h1>Quote Maker</h1>
         </div>
         <hr />
-        <QuoteForm />
+        {/* <ErrorBoundary> */}
+          <QuoteForm />
+        {/* </ErrorBoundary> */}
+
+        {/* <ErrorBoundary> */}
         <Quotes />
+        {/* </ErrorBoundary> */}
         {/*
           TODO:
 
