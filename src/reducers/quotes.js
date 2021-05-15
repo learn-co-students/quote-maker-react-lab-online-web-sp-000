@@ -1,21 +1,37 @@
-import uuid from 'uuid';
-
 export default (state = [], action) => {
+  let index;
+  let quote;
+
   switch (action.type) {
     case 'ADD_QUOTE':
-      const quote = {
-        id: uuid(), 
-        content: action.content, 
-        author: action.author, 
-        votes: action.votes
-      }
-      return { state: state.quote.concat(quote)}
+      return state.concat(action.quote);
+
     case 'REMOVE_QUOTE':
-      return { state: state.filter(quote => quote.id !== action.id)}
+      return state.filter(quote => quote.id !== action.quoteId)
+
     case 'UPVOTE_QUOTE':
-      return { state: state.quote.id + 1}
+      index = state.findIndex(quote => quote.id === action.quoteId)
+      quote = state[index]
+      debugger;
+      return [
+        ...state.slice(0, index),
+        Object.assign({}, quote, { votes: quote.votes += 1 }),
+        ...state.slice(index + 1)
+      ];
+
     case 'DOWNVOTE_QUOTE':
-      return { state: state.quote.id - 1 }
+      index = state.findIndex(quote => quote.id === action.quoteId)
+      quote = state[index]
+      if (quote.votes > 0) {
+        return [
+          ...state.slice(0, index),
+          Object.assign({}, quote, { votes: quote.votes -= 1 }),
+          ...state.slice(index + 1)
+        ]
+      }
+
+    default:
+      return state;
+
   }
-  return state;
 }
