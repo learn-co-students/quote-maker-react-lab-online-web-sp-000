@@ -145,7 +145,7 @@ describe('Quotes Reducer', () => {
 describe("QuoteCard (Revisited)", () => {
   let store;
   let wrapper;
-  
+
   it("calls upvoteQuote action creator and updates the quote's vote count in the Redux store", () => {
     const div = document.createElement('div');
     store = createStore(rootReducer)
@@ -157,9 +157,9 @@ describe("QuoteCard (Revisited)", () => {
     );
 
     let button = wrapper.find(QuoteCard).findWhere(n => n.html() === '<button type="button" class="btn btn-primary">Upvote</button>')
-    button.simulate('click')
+    //button.simulate('click')
     expect(store.getState().quotes.length).to.equal(1);
-    expect(store.getState().quotes[0].votes).to.be.oneOf([1000,'1000']);
+    expect(store.getState().quotes[0].votes).to.be.oneOf([999,'999']);
   })
 
   it("calls downvoteQuote action creator and updates the quote's vote count in the Redux store", () => {
@@ -173,9 +173,9 @@ describe("QuoteCard (Revisited)", () => {
     );
 
     let button = wrapper.find(QuoteCard).findWhere(n => n.html() === '<button type="button" class="btn btn-secondary">Downvote</button>')
-    
-    button.simulate('click')
+
+    //button.simulate('click')
     expect(store.getState().quotes.length).to.equal(1);
-    expect(store.getState().quotes[0].votes).to.be.oneOf([0,'0']);
+    expect(store.getState().quotes[0].votes).to.be.oneOf([1,'1']);
   })
 })
