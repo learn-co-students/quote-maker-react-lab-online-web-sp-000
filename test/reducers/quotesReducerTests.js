@@ -159,6 +159,7 @@ describe("QuoteCard (Revisited)", () => {
     let button = wrapper.find(QuoteCard).findWhere(n => n.html() === '<button type="button" class="btn btn-primary">Upvote</button>')
     button.simulate('click')
     expect(store.getState().quotes.length).to.equal(1);
+    console.log("AAAAAAAAAAAAAA", store.getState().quotes[0])
     expect(store.getState().quotes[0].votes).to.be.oneOf([1000,'1000']);
   })
 
