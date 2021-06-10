@@ -6,15 +6,22 @@ import { addQuote } from '../actions/quotes';
 class QuoteForm extends Component {
 
   state = {
-    //set up a controlled form with internal state
+    content: '',
+    author: ''
   }
 
   handleOnChange = event => {
-    // Handle Updating Component State
+    this.setState({
+      [event.target.id]: event.target.value
+    })
   }
 
   handleOnSubmit = event => {
     // Handle Form Submit event default
+    event.preventDefault();
+    const quote = this.state;
+    console.log(this.state);
+    this.props.addQuote(quote);
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
@@ -32,7 +39,9 @@ class QuoteForm extends Component {
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
+                        id="content"
                         className="form-control"
+                        onChange={this.handleOnChange}
                         value={this.state.content}
                       />
                     </div>
@@ -43,6 +52,8 @@ class QuoteForm extends Component {
                       <input
                         className="form-control"
                         type="text"
+                        id="author"
+                        onChange={this.handleOnChange}
                         value={this.state.author}
                       />
                     </div>
@@ -62,5 +73,10 @@ class QuoteForm extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  addQuote: (quote) => addQuote(quote)
+})
+
+
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);
