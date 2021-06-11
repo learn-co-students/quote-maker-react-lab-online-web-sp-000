@@ -15,10 +15,13 @@ export function removeQuote(id) {
 }
 
 export function upvoteQuote(id) {
-  return {
+  console.log(id)
+  let action = {
     type: "UPVOTE_QUOTE",
     quoteId: id
   }
+  console.log(action)
+  return action;
 }
 
 export function downvoteQuote(id) {

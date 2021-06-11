@@ -11,8 +11,9 @@ class QuoteForm extends Component {
   }
 
   handleOnChange = event => {
+    // console.log(event.target.name)
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -43,13 +44,13 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
                       <textarea
                         name="content"
-                        id="content"
+                        // id="content"
                         className="form-control"
                         onChange={this.handleOnChange}
                         value={this.state.content}
@@ -63,7 +64,7 @@ class QuoteForm extends Component {
                         name="author"
                         className="form-control"
                         type="text"
-                        id="author"
+                        // id="author"
                         onChange={this.handleOnChange}
                         value={this.state.author}
                       />
@@ -84,10 +85,10 @@ class QuoteForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addQuote: (quote) => addQuote(quote)
-})
+// const mapDispatchToProps = dispatch => ({
+//   addQuote: (quote) => addQuote(quote)
+// })
 
 
 //add arguments to connect as needed
-export default connect(null, mapDispatchToProps)(QuoteForm);
+export default connect(null, {addQuote})(QuoteForm);

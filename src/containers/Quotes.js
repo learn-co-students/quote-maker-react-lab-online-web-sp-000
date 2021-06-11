@@ -9,6 +9,9 @@ import {
 } from "../actions/quotes.js";
 
 class Quotes extends Component {
+
+  // renderCard t clean up rendering details
+
   render() {
     console.log(this.props.quotes);
     return (
@@ -26,9 +29,9 @@ class Quotes extends Component {
                   key={quote.id}
                   quote={quote}
                   // addQuote={addQuote}
-                  removeQuote={removeQuote}
-                  upvoteQuote={upvoteQuote}
-                  downvoteQuote={downvoteQuote}
+                  removeQuote={this.props.removeQuote}
+                  upvoteQuote={this.props.upvoteQuote}
+                  downvoteQuote={this.props.downvoteQuote}
                 />
               ))}
 
@@ -45,9 +48,17 @@ class Quotes extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  quotes: state.quotes,
-});
+const mapStateToProps = ({ quotes }) => ({ quotes });
+  // quotes: [state]
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeQuote: (id) => dispatch(removeQuote(id)),
+    upvoteQuote: (id) => dispatch(upvoteQuote(id)),
+    downvoteQuote: (id) => dispatch(downvoteQuote(id))
+  }
+}
+
 
 //add arguments to connect as needed
-export default connect(mapStateToProps)(Quotes);
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
