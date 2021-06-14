@@ -1,5 +1,5 @@
 import React from 'react';
-import Quotes from '../containers/Quotes'
+
 
 const QuoteCard = (props) =>
   <div>

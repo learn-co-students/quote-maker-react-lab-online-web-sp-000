@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import QuoteCard from '../components/QuoteCard';
-import QuoteForm from '../components/QuoteForm'
 import {removeQuote, upvoteQuote, downvoteQuote} from '../actions/quotes'
 class Quotes extends Component {
 
